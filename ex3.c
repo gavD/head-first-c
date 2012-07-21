@@ -16,6 +16,7 @@ int main() {
             break;
         } else if(nextCount == CODE_ERROR) {
             puts("Invalid card. Value cards are 2,3,4,5,6,7,8,9,10,J,Q,K,A");
+            continue;
         } else {
             count += nextCount;
         }

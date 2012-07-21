@@ -11,6 +11,7 @@ int main() {
         count += nextCount;
         printf("Card count is %i\n", count);
         if(nextCount == 99) {
+            puts("\nEnd");
             break;
         }
     }
@@ -29,6 +30,10 @@ int getNextCount() {
 int updateCount(char card_name[]) {
     int val = getCardValue(card_name);
 
+    if(val == 99) {
+        return 99;
+    }
+
     if(val >= 3 && val <= 6) {
         return 1;
     }
@@ -41,19 +46,22 @@ int updateCount(char card_name[]) {
 int getCardValue(char card_name[]) {
     int val = 0;
 
-    if(card_name[0] == 'X') {
-        return 99;
-    }
-    if (card_name[0] == 'K') {
-        val = 10;
-    } else if (card_name[0] == 'Q') {
-        val = 10;
-    } else if (card_name[0] == 'J') {
-        val = 10;
-    } else if (card_name[0] == 'A') {
-        val = 11;
-    } else {
-        val = atoi(card_name);
+    switch(card_name[0]) {
+        case 'K':
+            // fall through
+        case 'Q':
+            // fall through
+        case 'J':
+            val = 10;
+            break;
+        case 'A':
+            val = 11;
+            break;
+        case 'X':
+            val = 99; // exit condition
+            break;
+        default:
+            val = atoi(card_name);
     }
 
     return val;

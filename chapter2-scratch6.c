@@ -3,12 +3,14 @@
 
 int main() {
     char name[40];
-    char address[255];
-puts(name);
-puts(address);
     printf("Enter your name: ");
     scanf("%39s", name);
     puts(name);
-    puts(address);
+
+
+    int age;
+    printf("Enter your age: ");
+    scanf("%i", &age);
+    printf("%s is %i years old\n", name, age);
     return 0;
 }
